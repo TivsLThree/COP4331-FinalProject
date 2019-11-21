@@ -21,7 +21,8 @@ class Card extends Component
           {"Saved " +( (this.props.date == undefined) ? "1/1/1970" : this.props.date )}
         </h6>
         <p className="card-text">
-          {(this.props.artists == undefined) ? "You. Only You. You need friends." : this.props.artists}
+          {(this.props.artists == undefined) ? "You. Only You. You need friends." :
+          this.props.artists}
         </p>
       </div>
     </div>

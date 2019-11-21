@@ -1,9 +1,15 @@
-.scrolling-wrapper {
-  overflow-x: scroll;
-  overflow-y: hidden;
+div.scrollPicture {
+  background-color: white;
+  overflow: auto;
   white-space: nowrap;
-
-  .card {
-    display: inline-block;
-  }
+}
+div.scrollPicture a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+div.scrollPicture a:hover {
+  background-color: white;
 }
