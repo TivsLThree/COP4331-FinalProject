@@ -4,7 +4,7 @@ import "./Card.css"
 import Card from "./Card"
 import {Row, Button, Col} from 'react-bootstrap'
 import {Container} from 'react-bootstrap'
-
+import ViewCardPage from './ViewCardPage'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import backgroundImg from './background.png';
