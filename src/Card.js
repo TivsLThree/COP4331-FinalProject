@@ -11,7 +11,7 @@ class Card extends Component
   {
   var OVERRIDE = true;
   return (
-    <div className="card" style={{width: '20rem'}}>
+    <div className="card" style={{width: '15rem'}}>
       <img className="card-img-top" src={(OVERRIDE) ? logo: this.props.imagePath} title="ur mom"/>
       <div className="card-body">
         <h5 className="card-title">
