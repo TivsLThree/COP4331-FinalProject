@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from './authActions';
 import TextFieldGroup from './TextFieldGroup';
-
+import "./Login.css"
 class LoginPage extends Component {
   constructor() {
     super();
@@ -52,6 +52,7 @@ class LoginPage extends Component {
     const { errors } = this.state;
 
     return (
+      <div className="Login-component">
       <div className="registerLoginPage">
       <div className="login">
         <div className="container">
@@ -78,11 +79,12 @@ class LoginPage extends Component {
                   onChange={this.onChange}
                   error={errors.password}
                 />
-                <input type="submit" className="btn btn-warning btn-block mt-4" />
+                <input type="submit" className="btn btn-primary btn-block mt-4" />
               </form>
             </div>
           </div>
         </div>
+      </div>
       </div>
       </div>
     );

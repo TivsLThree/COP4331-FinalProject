@@ -6,14 +6,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import ViewCardPage from "./ViewCardPage";
 import LoginPage from "./LoginPage";
-const routing = (
-  <Router>
-    <div>
-      <Route exact path="/" component={LoginPage} />
-      <Route  path="/ViewCards" component={ViewCardPage}/>
-    </div>
-  </Router>
-)
+
 ReactDOM.render(<App/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
