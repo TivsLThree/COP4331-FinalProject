@@ -1,12 +1,6 @@
-.Login-component {
-    /* The image used */
-    background-image: url(./background.png);
 
-    /* Full height */
-    height: 100%;
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.login {
+  background-image: url(./background.png);
+  background-repeat: repeat-y;
+  background-size: cover;
 }

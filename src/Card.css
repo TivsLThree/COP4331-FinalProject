@@ -1,5 +1,5 @@
 div.scrollPicture {
-  background-color: white;
+
   overflow: auto;
   white-space: nowrap;
   width: 60%;
@@ -12,7 +12,7 @@ div.scrollPicture a {
   display: inline-block;
   color: white;
   text-align: center;
-  padding: 14px;
+  padding: 2px;
   text-decoration: none;
 }
 div.scrollPicture a:hover {
@@ -25,13 +25,16 @@ div.scrollPicture a:hover {
 }
 
 .background {
-  background-image: url(./background.png);
+/*  background-image: url(./background.png);*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-
+h1{
+  font-family: "Arial Black", Gadget, sans-serif;
+  display: inline-block;
+}
 .leftAlign {
   margin: left;
   width: 10%;
@@ -89,7 +92,7 @@ div.scrollPicture a:hover {
   border-style: none;
   box-sizing: border-box;
   float: left;
-  background-color: white;
+
 }
 #rightArrow {
   width: 3%;

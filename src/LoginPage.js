@@ -33,6 +33,9 @@ class LoginPage extends Component {
     }
   }
 
+  componentDidMount() {
+        document.body.classList.add("login")
+  }
   onSubmit(e) {
     e.preventDefault();
 
@@ -54,7 +57,7 @@ class LoginPage extends Component {
     return (
       <div className="Login-component">
       <div className="registerLoginPage">
-      <div className="login">
+      <div className="">
         <div className="container">
           <div className="row">
             <div className="col-md-4 m-auto">
