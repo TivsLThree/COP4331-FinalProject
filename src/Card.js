@@ -16,6 +16,9 @@ constructor(props){
   }
 }
 
+componentDidMount() {
+      document.body.classList.add("login")
+}
   handleOpen = () => {
     this.setState({show:true})
   }
