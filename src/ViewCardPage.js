@@ -5,123 +5,150 @@ import backgroundImg from './background.png';
 import SearchBar from "./SearchBar"
 class ViewCardPage extends React.Component
 {
+  constructor (props) {
+    super(props);
+  //  this.loadCards();
+  this.state = {
+    search: {searchText: ''}
+  };
+  }
+   returns =
+  [
+    {
+      isFavorite: false,
+      isSaved: false,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: false,
+      isSaved: true,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: true,
+      isSaved: true,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: false,
+      isSaved: false,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: false,
+      isSaved: true,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: true,
+      isSaved: true,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: false,
+      isSaved: false,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: false,
+      isSaved: true,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: true,
+      isSaved: true,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: false,
+      isSaved: false,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: false,
+      isSaved: true,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
+    {
+      isFavorite: true,
+      isSaved: true,
+      imagePath: "./LogoCircle.png",
+      name: "My Beautiful Creation",
+      date: "20/20/20",
+      artists:
+        ["me", "you", "your mom"]
+    },
 
+  ];
+  search = (e) => {
+    console.log(e);
+    this.setState({search: e});
+  }
+  filterCards = (filterText) => {
+    const recents = this.returns.slice(0).filter((e) => {
+      return e.isSaved === false &&
+      (e.date.includes(filterText) ||
+      e.name.includes(filterText) ||
+      e.artists.includes(filterText)
+      )
+    }).map((item, index) => {
+      return (
+        <a><Card
+        imagePath = {item.imagePath}
+        name = {item.name}
+        date = {item.date}
+        artists = {item.artists}
+        /></a>
+      )
+    })
+  }
   loadCards()
   {
-    var returns =
-    [
-      {
-        isFavorite: false,
-        isSaved: false,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: false,
-        isSaved: true,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: true,
-        isSaved: true,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: false,
-        isSaved: false,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: false,
-        isSaved: true,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: true,
-        isSaved: true,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: false,
-        isSaved: false,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: false,
-        isSaved: true,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: true,
-        isSaved: true,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: false,
-        isSaved: false,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: false,
-        isSaved: true,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-      {
-        isFavorite: true,
-        isSaved: true,
-        imagePath: "./LogoCircle.png",
-        name: "My Beautiful Creation",
-        date: "20/20/20",
-        artists:
-          ["me", "you", "your mom"]
-      },
-
-    ];
-
-    const recents = returns.slice(0).filter((e) => {
+    const recents = this.returns.slice(0).filter((e) => {
       return e.isSaved === false;
     }).map((item, index) => {
       return (
@@ -134,7 +161,7 @@ class ViewCardPage extends React.Component
       )
     })
 
-    const favorites = returns.slice(0).filter((e) => {
+    const favorites = this.returns.slice(0).filter((e) => {
       return e.isFavorite === true;
     }).map((item, index) => {
       return (
@@ -147,7 +174,7 @@ class ViewCardPage extends React.Component
       )
     })
 
-    const saved = returns.slice(0).filter((e) => {
+    const saved = this.returns.slice(0).filter((e) => {
       return e.isSaved === true;
     }).map((item, index) => {
       return (
@@ -198,7 +225,7 @@ class ViewCardPage extends React.Component
     var h3 = (cards[2].length == 0) ? <div/>: <h1 style ={{paddingLeft: "20px"}}>Saved</h1> ;
         return (
             <div className = "background">
-            <SearchBar/>
+            <SearchBar search={this.search}/>
                               {h1}
               <div id = "cardSlider">
                 <div id = "leftArrow">

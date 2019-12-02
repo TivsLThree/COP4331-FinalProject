@@ -10,8 +10,25 @@ class SearchBar extends Component {
       searchText: ""
     }
   }
+  _handleKeyDown = (e) =>{
+    if(e.key === 'Enter')
+    {
+      e.preventDefault();
+      this.handleSubmit();
+    }
+  }
+  handleChange = (e) => {
+    this.setState({
+      searchText: e.target.value
+    });
+  }
+  handleSubmit = (e) =>
+  {
+    this.props.search(this.state)
+  }
   render () {
     const style = {
+      position: '',
       display: 'inline-block',
       border: '1px solid black'
     };
@@ -27,6 +44,7 @@ class SearchBar extends Component {
               aria-label="Search"
               autoFocus={true}
               style = {style}
+              onKeyPress = {this._handleKeyDown}
             />
           </Form.Group>
           <Form.Group as = {Form.Col} md="3">

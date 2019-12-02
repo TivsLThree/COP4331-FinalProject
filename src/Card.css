@@ -1,5 +1,5 @@
 div.scrollPicture {
-
+  background-color: #EEE;
   overflow: auto;
   white-space: nowrap;
   width: 60%;
@@ -12,7 +12,7 @@ div.scrollPicture a {
   display: inline-block;
   color: white;
   text-align: center;
-  padding: 2px;
+  padding: 14px;
   text-decoration: none;
 }
 div.scrollPicture a:hover {
