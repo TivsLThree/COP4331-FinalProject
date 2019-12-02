@@ -1,5 +1,5 @@
 div.scrollPicture {
-  background-color: white;
+
   overflow: auto;
   white-space: nowrap;
   width: 60%;
@@ -12,7 +12,7 @@ div.scrollPicture a {
   display: inline-block;
   color: white;
   text-align: center;
-  padding: 14px;
+  padding: 2px;
   text-decoration: none;
 }
 div.scrollPicture a:hover {
@@ -92,7 +92,7 @@ h1{
   border-style: none;
   box-sizing: border-box;
   float: left;
-  background-color: white;
+
 }
 #rightArrow {
   width: 3%;
