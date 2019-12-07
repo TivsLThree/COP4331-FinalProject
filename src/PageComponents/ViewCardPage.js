@@ -91,17 +91,28 @@ class ViewCardPage extends React.Component
   {
 
     var leftButton = function() {
-      var container = document.getElementById('centerSlide');
+      var container = document.getElementsByClassName('slide1')[0];
       scrollButton(container, 'left', 25, 100, 200);
     }
     var rightButton = function() {
-      var container = document.getElementById('centerSlide');
+      var container = document.getElementsByClassName('slide1')[0];
+      console.log(container);
+      scrollButton(container, 'right', 25, 100, 200);
+    }
+    var leftButton2 = function() {
+      var container = document.getElementsByClassName('slide2')[0];
+      scrollButton(container, 'left', 25, 100, 200);
+    }
+    var rightButton2 = function() {
+      var container = document.getElementsByClassName('slide2')[0];
       console.log(container);
       scrollButton(container, 'right', 25, 100, 200);
     }
 
     var left = <button id = "left" className = "buttonArrowHeight btn btn-info" type="button" onClick = {leftButton}>{"<"}</button>;
     var right = <button id = "right" className = "buttonArrowHeight btn btn-info" type="button" onClick = {rightButton}>{">"}</button>;
+    var left2 = <button id = "left" className = "buttonArrowHeight btn btn-info" type="button" onClick = {leftButton2}>{"<"}</button>;
+    var right2 = <button id = "right" className = "buttonArrowHeight btn btn-info" type="button" onClick = {rightButton2}>{">"}</button>;
 
     function scrollButton(container, direction, speed, distance, step) {
       var scrollAmo = 0;
@@ -131,7 +142,7 @@ class ViewCardPage extends React.Component
                 <div id = "leftArrow">
                   {left}
                 </div>
-                  <div className = 'scrollPicture' id = "centerSlide">
+                  <div className = 'scrollPicture slide1' id = "centerSlide">
                   {this.state.cards[0]}
                   </div>
                 <div id = "rightArrow">
@@ -141,13 +152,13 @@ class ViewCardPage extends React.Component
               {h3}
               <div id = "cardSlider">
                 <div id = "leftArrow">
-                  {left}
+                  {left2}
                 </div>
-                  <div className = 'scrollPicture' id = "centerSlide">
+                  <div className = 'scrollPicture slide2' id = "centerSlide">
                   {this.state.cards[1]}
                   </div>
                 <div id = "rightArrow">
-                  {right}
+                  {right2}
                 </div>
               </div>
             </div>
