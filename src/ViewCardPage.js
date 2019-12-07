@@ -9,11 +9,119 @@ class ViewCardPage extends React.Component
     super(props);
   //  this.loadCards();
   this.state = {
-    search: {searchText: ''}
+    search: {searchText: ''},
+    cards: {}
   };
   }
    returns =
-  [
+  [{
+    isFavorite: false,
+    isSaved: false,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: false,
+    isSaved: true,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: true,
+    isSaved: true,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: false,
+    isSaved: false,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: false,
+    isSaved: true,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: true,
+    isSaved: true,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: false,
+    isSaved: false,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: false,
+    isSaved: true,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: true,
+    isSaved: true,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: false,
+    isSaved: false,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: false,
+    isSaved: true,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
+  {
+    isFavorite: true,
+    isSaved: true,
+    imagePath: "./LogoCircle.png",
+    name: "My Beautiful Creation",
+    date: "20/20/20",
+    artists:
+      ["me", "you", "your mom"]
+  },
     {
       isFavorite: false,
       isSaved: false,
@@ -96,10 +204,10 @@ class ViewCardPage extends React.Component
         ["me", "you", "your mom"]
     },
     {
-      isFavorite: false,
-      isSaved: false,
+      isFavorite: true,
+      isSaved: true,
       imagePath: "./LogoCircle.png",
-      name: "My Beautiful Creation",
+      name: "Levi",
       date: "20/20/20",
       artists:
         ["me", "you", "your mom"]
@@ -127,10 +235,15 @@ class ViewCardPage extends React.Component
   search = (e) => {
     console.log(e);
     this.setState({search: e});
+    this.setState({cards: this.filterCards(e)});
+    console.log(e)
+    console.log(this.filterCards(e.searchText))
   }
   filterCards = (filterText) => {
-    const recents = this.returns.slice(0).filter((e) => {
-      return e.isSaved === false &&
+    if(filterText === undefined)
+      filterText = '';
+    const favorites = this.returns.slice(0).filter((e) => {
+      return e.isFavorite === true &&
       (e.date.includes(filterText) ||
       e.name.includes(filterText) ||
       e.artists.includes(filterText)
@@ -145,11 +258,13 @@ class ViewCardPage extends React.Component
         /></a>
       )
     })
-  }
-  loadCards()
-  {
-    const recents = this.returns.slice(0).filter((e) => {
-      return e.isSaved === false;
+
+    const saved = this.returns.slice(0).filter((e) => {
+      return e.isSaved === true &&
+      (e.date.includes(filterText) ||
+      e.name.includes(filterText) ||
+      e.artists.includes(filterText)
+      )
     }).map((item, index) => {
       return (
         <a><Card
@@ -160,6 +275,22 @@ class ViewCardPage extends React.Component
         /></a>
       )
     })
+    return [favorites, saved]
+  }
+  loadCards()
+  {
+    // const recents = this.returns.slice(0).filter((e) => {
+    //   return e.isSaved === false;
+    // }).map((item, index) => {
+    //   return (
+    //     <a><Card
+    //     imagePath = {item.imagePath}
+    //     name = {item.name}
+    //     date = {item.date}
+    //     artists = {item.artists}
+    //     /></a>
+    //   )
+    // })
 
     const favorites = this.returns.slice(0).filter((e) => {
       return e.isFavorite === true;
@@ -186,19 +317,19 @@ class ViewCardPage extends React.Component
         /></a>
       )
     })
-    return [recents, favorites, saved];
+    return [favorites, saved];
   }
 
   render ()
   {
     var leftButton = function() {
       var container = document.getElementById('centerSlide');
-      this.scrollButton(container, 'left', 25, 100, 200);
+      scrollButton(container, 'left', 25, 100, 200);
     }
     var rightButton = function() {
       var container = document.getElementById('centerSlide');
       console.log(container);
-      this.scrollButton(container, 'right', 25, 100, 200);
+      scrollButton(container, 'right', 25, 100, 200);
     }
 
     var left = <button id = "left" className = "buttonArrowHeight btn btn-info" type="button" onClick = {leftButton}>{"<"}</button>;
@@ -219,14 +350,15 @@ class ViewCardPage extends React.Component
         }
       }, speed);
     }
-    const cards = this.loadCards()
-    var h1 = (cards[0].length == 0) ? <div/>: <h1 style ={{paddingLeft: "20px"}}>Unsaved Recents</h1> ;
-    var h2 = (cards[1].length == 0) ? <div/>: <h1 style ={{paddingLeft: "20px"}}>Favorites</h1> ;
-    var h3 = (cards[2].length == 0) ? <div/>: <h1 style ={{paddingLeft: "20px"}}>Saved</h1> ;
+    const cards = this.filterCards(this.state.searchText);
+  //  var h1 = (cards[0].length == 0) ? <div/>: <h1 style ={{paddingLeft: "20px"}}>Unsaved Recents</h1> ;
+    var h2 = (cards[0].length == 0) ? <div/>: <h1 style ={{paddingLeft: "20px"}}>Favorites</h1> ;
+    var h3 = (cards[1].length == 0) ? <div/>: <h1 style ={{paddingLeft: "20px"}}>Saved</h1> ;
         return (
             <div className = "background">
             <SearchBar search={this.search}/>
-                              {h1}
+
+              {h2}
               <div id = "cardSlider">
                 <div id = "leftArrow">
                   {left}
@@ -238,25 +370,13 @@ class ViewCardPage extends React.Component
                   {right}
                 </div>
               </div>
-              {h2}
-              <div id = "cardSlider">
-                <div id = "leftArrow">
-                  {left}
-                </div>
-                  <div className = 'scrollPicture' id = "centerSlide">
-                  {cards[1]}
-                  </div>
-                <div id = "rightArrow">
-                  {right}
-                </div>
-              </div>
               {h3}
               <div id = "cardSlider">
                 <div id = "leftArrow">
                   {left}
                 </div>
                   <div className = 'scrollPicture' id = "centerSlide">
-                  {cards[2]}
+                  {cards[1]}
                   </div>
                 <div id = "rightArrow">
                   {right}
