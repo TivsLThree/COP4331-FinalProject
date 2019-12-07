@@ -96,7 +96,6 @@ class ViewCardPage extends React.Component
     }
     var rightButton = function() {
       var container = document.getElementsByClassName('slide1')[0];
-      console.log(container);
       scrollButton(container, 'right', 25, 100, 200);
     }
     var leftButton2 = function() {
@@ -105,7 +104,6 @@ class ViewCardPage extends React.Component
     }
     var rightButton2 = function() {
       var container = document.getElementsByClassName('slide2')[0];
-      console.log(container);
       scrollButton(container, 'right', 25, 100, 200);
     }
 

@@ -9,6 +9,7 @@ import {Row} from 'react-bootstrap'
 import {Container} from 'react-bootstrap'
 import ViewCardPage from './PageComponents/ViewCardPage'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LobbyPage from "./PageComponents/LobbyPage"
 
 import PrivateRoute from "./PrivateRoute";
 
@@ -28,6 +29,7 @@ class App extends Component {
             <Switch>
               {/*TODO: Make this PrivateRoute once api calls work*/}
               <Route exact path ="/dashboard" component = {ViewCardPage}/>
+              <Route exact path="/lobby" component ={LobbyPage}/>
               <Route exact path="/" component ={LoginPage}/>
 
               <Route exact component = {null}/>
