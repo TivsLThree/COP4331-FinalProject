@@ -1,4 +1,4 @@
-
+import * as io from 'socket.io-client'
 export default function sketch(p){
   let socket
   let color = '#000000'
@@ -12,14 +12,14 @@ export default function sketch(p){
       cv.background(220, 220, 220)
 
       // socket io connect
-  //    socket = io.connect('http://localhost:3000')
+     socket = io.connect('http://localhost:3000')
 
-      // callback function (used to draw data received from other sockets)
-      // socket.on('mouse', data => {
-      //     p.stroke(data.color)
-      //     p.strokeWeight(data.strokeWidth)
-      //     p.line(data.x, data.y, data.px, data.py)
-      // })
+    //  callback function (used to draw data received from other sockets)
+      socket.on('mouse', data => {
+          p.stroke(data.color)
+          p.strokeWeight(data.strokeWidth)
+          p.line(data.x, data.y, data.px, data.py)
+      })
 
       // Getting our buttons and the inputs through the p5.js dom
       const color_picker = p.select('#pickcolor')
@@ -66,7 +66,7 @@ export default function sketch(p){
           strokeWidth : strokeWidth,
       }
 
-  //    socket.emit('mouse', data)
+     socket.emit('mouse', data)
   }
 
   // TODO: Window resized function
