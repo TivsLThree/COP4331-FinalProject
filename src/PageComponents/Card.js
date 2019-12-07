@@ -6,7 +6,7 @@ import {Modal} from 'react-bootstrap'
 // Image,
 // Name
 // Date
-import logo from "./LogoCircle.png"
+import logo from '../resources/LogoCircle.png'
 class Card extends Component
 {
 constructor(props){

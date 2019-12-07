@@ -3,16 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { Provider } from "react-redux";
 import store from "./store";
-import Card from "./Card"
-import LoginPage from "./LoginPage"
+import Card from './PageComponents/Card'
+import LoginPage from './PageComponents/LoginPage'
 import {Row} from 'react-bootstrap'
 import {Container} from 'react-bootstrap'
-import ViewCardPage from './ViewCardPage'
+import ViewCardPage from './PageComponents/ViewCardPage'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import PrivateRoute from "./PrivateRoute";
 
-import Navbar from "./Navbar";
+import Navbar from './PageComponents/Navbar';
 //TODO: Figure out a scrollable horizontal
 // Correct format
 //<Card imagePath="./LogoCircle.png" name="Masterpiece" date="69/69/69" artists="Me. Myself. I"/>

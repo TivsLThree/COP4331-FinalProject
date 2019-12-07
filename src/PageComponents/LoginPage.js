@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginUser } from './authActions';
-import TextFieldGroup from './TextFieldGroup';
-import "./Login.css"
+import { loginUser } from '../authActions';
+import TextFieldGroup from '../TextFieldGroup';
+import '../css/Login.css'
 class LoginPage extends Component {
   constructor() {
     super();

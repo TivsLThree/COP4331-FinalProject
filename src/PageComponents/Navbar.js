@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { logoutUser } from './authActions';
-import { clearCurrentProfile } from './profileActions';
+import { logoutUser } from '../authActions';
+import { clearCurrentProfile } from '../profileActions';
 
 class Navbar extends Component {
   onLogoutClick(e) {
@@ -63,7 +63,7 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
             </ul>
-            {isAuthenticated ? authLinks : ""}
+            {true || isAuthenticated ? authLinks : ""}
           </div>
         </div>
       </nav>

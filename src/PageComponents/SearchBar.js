@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from "react-bootstrap/Form"
-import "./Login.css"
+import '../css/Login.css'
 class SearchBar extends Component {
   constructor (props)
   {
@@ -20,7 +20,7 @@ class SearchBar extends Component {
   handleChange = (e) => {
     this.setState({
       searchText: e.target.value
-    });
+    })
   }
   handleSubmit = (e) =>
   {
