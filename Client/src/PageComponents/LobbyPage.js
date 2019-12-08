@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import P5Wrapper from 'react-p5-wrapper'
 import sketch from './sketch'
 import background from '../resources/background.png'
+import '../css/LobbyPage.css'
 
 import * as io from 'socket.io-client'
 const socket = io.connect('http://localhost:3001')
@@ -14,7 +15,7 @@ class LobbyPage extends Component {
     console.log(lobbyCode)
   }
   componentDidMount() {
-
+    document.body.background = background;
   }
   componentWillUnmount() {
     socket.emit('leave room', {
@@ -23,7 +24,7 @@ class LobbyPage extends Component {
 //    console.log(socket.connected)
   }
   render() {
-    document.body.background = background;
+    //document.body.background = background;
     return (
       <div>
       <p>Choose color (# hex)</p>
