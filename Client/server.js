@@ -19,7 +19,6 @@ const io = require('socket.io')(server)
 
 io.sockets.on('connection', (socket) => {
     console.log('Client connected: ' + socket.id)
-
     // mouse event is from sketch.js
     // socket.broadcast.emit sends out the data to all online sockets
     socket.on('mouse', (data) => socket.broadcast.emit('mouse', data))
