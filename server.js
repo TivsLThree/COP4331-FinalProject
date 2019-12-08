@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const items = require('./routes/api/items')
 // TODO:
 // const users...
+const users = require('./routes/api/users')
 
 const app = express()
 // Body parser middleware
@@ -29,6 +30,7 @@ app.set('port', '3001')
 app.use('/api/items/', items);
 // TODO:
 // app.use users
+app.use('/api/users/', users);
 
 const server = http.createServer(app)
 server.on('listening', () => {
