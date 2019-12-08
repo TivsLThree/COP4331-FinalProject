@@ -1,48 +1,28 @@
 {
-  "name": "large_project",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.19.0",
-    "bootstrap": "^4.3.1",
-    "express": "^4.17.1",
-    "jwt-decode": "^2.2.0",
-    "p5": "^0.10.2",
-    "prop-types": "^15.7.2",
-    "random-words": "^1.1.0",
-    "react": "^16.12.0",
-    "react-bootstrap": "^1.0.0-beta.15",
-    "react-dom": "^16.12.0",
-    "react-p5-wrapper": "^2.0.0",
-    "react-redux": "^7.1.3",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
-    "react-scroll-horizontal": "^1.6.2",
-    "react-strap": "0.0.1",
-    "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
-    "socket.io": "^2.3.0"
-  },
+  "name": "smudgeweb",
+  "version": "1.0.0",
+  "description": "web portion of our smudge app - specifically, the drawing capabilities using p5.js and real-time stuff using Sockets.IO",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [
+    "smudge",
+    "web",
+    "app",
+    "p5",
+    "p5.js",
+    "JS",
+    "Sockets",
+    "web",
+    "sockets",
+    "Sockets.IO"
+  ],
+  "author": "Edward Evangelista",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "p5": "^0.10.2",
+    "socket.io": "^2.3.0"
   }
 }
