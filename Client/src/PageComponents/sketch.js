@@ -1,15 +1,17 @@
 import * as io from 'socket.io-client'
+
 export default function sketch(p){
   let socket
   let color = '#000000'
   let strokeWidth = 15
-  let cv
+  let cv //the canvas
+
   p.setup = () => {
       // cv = createCanvas(windowWidth/2, windowHeight/2)
 
-      cv = p.createCanvas(1000, 800)
-      cv.position(500, 50)
-      cv.background(220, 220, 220)
+      cv = p.createCanvas(window.innerWidth, window.innerHeight)
+      cv.position(400, 50)
+      cv.background(220, 220, 220)// can change to all white, which is 0, 0, 0
 
       // socket io connect
      socket = io.connect('http://localhost:3001')
@@ -26,13 +28,13 @@ export default function sketch(p){
       const color_btn = p.select('#color-btn')
       const color_holder = p.select('#color-holder')
       const stroke_width_picker = p.select('#stroke-width-picker')
-      const stroke_btn = p.select('#stroke-btn')
+      const stroke_btn = p.select('#stroke-btn') 
 
       // Adding a mousePressed listener to the button
       color_btn.mousePressed(() => {
       // Checking if the input is a valid hex color
       if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$) /i.test(color_picker.value())){
-          color = color_picker.value()
+          color = color_picker.value(color)
           color_holder.style('background-color', color)
       }
       else {console.log('Enter a valid hex value')}
