@@ -5,12 +5,20 @@ export default function sketch(p){
   let strokeWidth = 15
   let cv
   var lobbyCode;
-  p.setup = () => {
+
+  function sleep(ms)
+  {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  p.setup = async function() {
+    await sleep(500)
       // cv = createCanvas(windowWidth/2, windowHeight/2)
       cv = p.createCanvas(1000, 800)
       cv.position(500, 50)
       cv.background(220, 220, 220)
-      console.log(lobbyCode)
+      if(lobbyCode === undefined)
+        lobbyCode = "default"
+      console.log(lobbyCode + "2")
       // socket io connect
      socket = io.connect('http://localhost:3001')
      socket.emit('room', {room: lobbyCode})
@@ -54,8 +62,9 @@ export default function sketch(p){
 
       p.sendMouse(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY)
   }
-  p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
+  p.myCustomRedrawAccordingToNewPropsHandler = (props) =>{
     lobbyCode = props.lobbyCode;
+    console.log(lobbyCode + "1")
   }
 
   // Sending data to the socket
