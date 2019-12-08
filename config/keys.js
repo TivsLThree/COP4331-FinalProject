@@ -1,3 +1,3 @@
 module.exports = {
-    mongoURI: 'REPLACE WITH ACTUAL KEY'
+    mongoURI: 'mongodb+srv://ted-testing:ted-testing@smudgecluster-aplhl.mongodb.net/test?retryWrites=true&w=majority'
 };

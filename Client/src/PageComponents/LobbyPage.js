@@ -5,6 +5,7 @@ import background from '../resources/background.png'
 import "../css/LobbyPage.css"
 import * as io from 'socket.io-client'
 import {CirclePicker} from 'react-color'
+import {Container, Row, Col} from 'react-bootstrap'
 const socket = io.connect('http://localhost:3001')
 var lobbyCode;
 var paintColor;
@@ -21,6 +22,7 @@ class LobbyPage extends Component {
     socket.emit('leave room', {
       room: lobbyCode
     })
+    document.title = "Smüdge"
 //    console.log(socket.connected)
   }
   onChangeColor(color, event) {
@@ -35,10 +37,24 @@ class LobbyPage extends Component {
 
     return (
       <div>
-      <CirclePicker className="colorPicker" onChange={this.onChangeColor}/>
-      <input type ="range" className="custom-range" id="paintWidthSlider" defaultValue ="15"
-        min="10" max="100" step="0.05"
-        style={{borderRadius: "20px",width:"250px"}}></input>
+        <Container style={{position: "absolute",paddingLeft: "80px"}}>
+          <Row>
+            <Col>
+              <button className="btn btn-success" id="saveButton" style={{bottom:"10px"}}>
+                Save Image!
+                </button>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <CirclePicker className="colorPicker" onChange={this.onChangeColor}/>
+              <input type ="range" className="custom-range" id="paintWidthSlider" defaultValue ="15"
+                min="10" max="100" step="0.05"
+                style={{width:"250px"}}>
+              </input>
+            </Col>
+          </Row>
+        </Container>
         <P5Wrapper sketch = {sketch} lobbyCode = {lobbyCode} getPaintColor={this.getPaintColor}></P5Wrapper>
       </div>
     )

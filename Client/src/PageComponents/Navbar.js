@@ -6,7 +6,9 @@ import { logoutUser } from '../authActions';
 import { clearCurrentProfile } from '../profileActions';
 import logo from '../resources/smudge2.png'
 import '../css/navbar.css'
-
+import {Form} from 'react-bootstrap'
+import Button from 'react'
+import { Route } from 'react-router-dom'
 class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault();
@@ -31,7 +33,23 @@ class Navbar extends Component {
         </li>
       </ul>
     );
-
+    var value;
+    const JoinLobby = (
+          <Form inline>
+            <Form.Group className="pull-left"controlId="formBasicEmail" style ={{paddingLeft: "20px"}}>
+              <Form.Control className="mr-sm-2"type="text" value = {value} id="inputText" placeholder="Enter a code to get started!"style ={{width: "202px", paddingLeft: "0px"}} />
+            </Form.Group>
+            <Route render={({ history}) => (
+              <button className="btn btn-success" variant="outline-success"
+                type='button'
+                onClick={(e) => {
+                  console.log( document.getElementById("inputText").value)
+                  history.replace("/lobby", {response: document.getElementById("inputText").value}) }}
+                  >
+                Join!
+              </button>
+            )} />
+          </Form>)
     /*const guestLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
@@ -67,7 +85,8 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
             </ul>
-            {true || isAuthenticated ? authLinks : ""}
+            {JoinLobby}
+            {false && isAuthenticated ? authLinks : ""}
           </div>
         </div>
       </nav>

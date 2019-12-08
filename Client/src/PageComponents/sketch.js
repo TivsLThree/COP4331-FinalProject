@@ -14,9 +14,13 @@ export default function sketch(p){
   p.setup = async function() {
     await sleep(100)
       // cv = createCanvas(windowWidth/2, windowHeight/2)
-      cv = p.createCanvas(window.innerWidth, window.innerHeight - 75)
-      cv.position(500, 75)
-      cv.background(220, 220, 220)
+      cv = p.createCanvas(1200,900)
+      cv.position(500, 115)
+      cv.background(255, 255, 255)
+            console.log(cv.canvas.toDataURL());
+            var image = new Image()
+            image.src = cv.canvas.toDataURL();
+            console.log(image)
       if(lobbyCode === undefined)
         lobbyCode = "default"
       console.log(lobbyCode + "2")
@@ -31,8 +35,9 @@ export default function sketch(p){
       })
 
       // Getting our buttons and the inputs through the p5.js dom
-      const color_picker =   document.getElementsByClassName("colorPicker")[0]
-      const stroke_slider=   document.getElementById("paintWidthSlider");
+      const color_picker  =   document.getElementsByClassName("colorPicker")[0]
+      const stroke_slider =   document.getElementById("paintWidthSlider");
+      const save_button   =   document.getElementById("saveButton");
       // Adding a mousePressed listener to the button
       color_picker.addEventListener("click", async function(e) {
         await sleep(50);
@@ -47,6 +52,11 @@ export default function sketch(p){
       // else {console.log('Enter a valid hex value')}
     })
     // Adding a mousePressed listener to the button
+    save_button.addEventListener("click", function () {
+      //TODO: Make DATABASE call to save
+      let imageAsString = cv.canvas.toDataURL();
+      console.log(imageAsString);
+    })
     stroke_slider.addEventListener("change", function(){
       strokeWidth = stroke_slider.value;
     })
@@ -58,7 +68,7 @@ export default function sketch(p){
       p.stroke(color)
       p.strokeWeight(strokeWidth)
       p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY)
-
+      var img;
       p.sendMouse(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY)
   }
   p.myCustomRedrawAccordingToNewPropsHandler = (props) =>{
