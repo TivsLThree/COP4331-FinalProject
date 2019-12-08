@@ -3,11 +3,19 @@ import P5Wrapper from 'react-p5-wrapper'
 import sketch from './sketch'
 import background from '../resources/background.png'
 
+import * as io from 'socket.io-client'
+const socket = io.connect('http://localhost:3001')
+const lobbyCode = "ABC" + Math.round(Math.random())
 class LobbyPage extends Component {
   constructor () {
     super()
   }
-
+  componentWillUnmount() {
+    socket.emit('leave room', {
+      room: lobbyCode
+    })
+//    console.log(socket.connected)
+  }
   render() {
     document.body.background = background;
     return (
@@ -20,7 +28,7 @@ class LobbyPage extends Component {
       <p>Choose stroke width</p>
       <input type="text" name="stroke_width" placeholder="4" id="stroke-width-picker" class="stroke_width_picker" />
       <button id="stroke-btn">Change stroke width</button>
-        <P5Wrapper sketch = {sketch}></P5Wrapper>
+        <P5Wrapper sketch = {sketch} lobbyCode = {lobbyCode}></P5Wrapper>
       </div>
     )
   }

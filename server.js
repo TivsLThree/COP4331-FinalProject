@@ -19,9 +19,17 @@ const io = require('socket.io')(server)
 
 io.sockets.on('connection', (socket) => {
     console.log('Client connected: ' + socket.id)
+    socket.on('room', function(data) {
+      socket.join(data.room);
+      console.log("Joined room: ", data.room);
+    })
 
+    socket.on('leave room', (data) => {
+      socket.leave(data.room);
+      console.log("Left the room: " + data.room)
+    })
     // mouse event is from sketch.js
     // socket.broadcast.emit sends out the data to all online sockets
-    socket.on('mouse', (data) => socket.broadcast.emit('mouse', data))
+    socket.on('mouse', (data) => socket.to(data.room).emit('mouse', data))
     socket.on('disconnect', () => console.log('Client has disconnected'))
 })

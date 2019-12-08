@@ -4,18 +4,17 @@ export default function sketch(p){
   let socket
   let color = '#000000'
   let strokeWidth = 15
-  let cv //the canvas
-
+  let cv
+  var lobbyCode;
   p.setup = () => {
       // cv = createCanvas(windowWidth/2, windowHeight/2)
-
-      cv = p.createCanvas(window.innerWidth, window.innerHeight)
-      cv.position(400, 50)
-      cv.background(220, 220, 220)// can change to all white, which is 0, 0, 0
-
+      cv = p.createCanvas(window.innerWidth, window.innerHeight - 75)
+      cv.position(500, 75)
+      cv.background(220, 220, 220)
+      console.log(lobbyCode)
       // socket io connect
      socket = io.connect('http://localhost:3001')
-
+     socket.emit('room', {room: lobbyCode})
     //  callback function (used to draw data received from other sockets)
       socket.on('mouse', data => {
           p.stroke(data.color)
@@ -56,6 +55,9 @@ export default function sketch(p){
 
       p.sendMouse(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY)
   }
+  p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
+    lobbyCode = props.lobbyCode;
+  }
 
   // Sending data to the socket
   p.sendMouse = (x, y, pX, pY) =>{
@@ -66,6 +68,7 @@ export default function sketch(p){
           py : pY,
           color : color,
           strokeWidth : strokeWidth,
+          room: lobbyCode
       }
 
      socket.emit('mouse', data)
