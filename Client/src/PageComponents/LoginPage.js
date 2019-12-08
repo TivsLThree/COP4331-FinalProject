@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../authActions';
 import TextFieldGroup from '../TextFieldGroup';
+import background from '../resources/background.png'
 import '../css/Login.css'
 class LoginPage extends Component {
   constructor() {
@@ -34,6 +35,7 @@ class LoginPage extends Component {
   }
 
   componentDidMount() {
+        document.body.background = background;
         document.body.classList.add("login")
   }
   onSubmit(e) {
