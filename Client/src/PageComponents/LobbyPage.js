@@ -5,10 +5,16 @@ import background from '../resources/background.png'
 
 import * as io from 'socket.io-client'
 const socket = io.connect('http://localhost:3001')
-const lobbyCode = "ABC" + Math.round(Math.random())
+var lobbyCode;
 class LobbyPage extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
+    lobbyCode = this.props.location.state.response;
+    document.title = "Lobby: " +lobbyCode
+    console.log(lobbyCode)
+  }
+  componentDidMount() {
+
   }
   componentWillUnmount() {
     socket.emit('leave room', {
