@@ -14,7 +14,7 @@ class JoinLobby extends Component {
       <Form>
         <Form.Group controlId="formBasicEmail" style ={{paddingLeft: "20px"}}>
           <Form.Label>Lobby Code</Form.Label>
-          <Form.Control type="email" value = {value} id="inputText" placeholder="Enter a code to get started!"style ={{paddingLeft: "20px"}} />
+          <Form.Control type="password" value = {value} id="inputText" placeholder="Enter a code to get started!"style ={{paddingLeft: "20px"}} />
         </Form.Group>
         <Route render={({ history}) => (
           <button

@@ -6,13 +6,13 @@ export default function sketch(p){
   let strokeWidth = 15
   let cv
   var lobbyCode;
-
+  var getPaintColor;
   function sleep(ms)
   {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   p.setup = async function() {
-    await sleep(500)
+    await sleep(100)
       // cv = createCanvas(windowWidth/2, windowHeight/2)
       cv = p.createCanvas(window.innerWidth, window.innerHeight - 75)
       cv.position(500, 75)
@@ -31,26 +31,24 @@ export default function sketch(p){
       })
 
       // Getting our buttons and the inputs through the p5.js dom
-      const color_picker = p.select('#pickcolor')
-      const color_btn = p.select('#color-btn')
-      const color_holder = p.select('#color-holder')
-      const stroke_width_picker = p.select('#stroke-width-picker')
-      const stroke_btn = p.select('#stroke-btn') 
-
+      const color_picker =   document.getElementsByClassName("colorPicker")[0]
+      const stroke_slider=   document.getElementById("paintWidthSlider");
       // Adding a mousePressed listener to the button
-      color_btn.mousePressed(() => {
+      color_picker.addEventListener("click", async function(e) {
+        await sleep(50);
+        console.log(getPaintColor());
+        if(getPaintColor() != undefined)
+        color = getPaintColor().hex;
       // Checking if the input is a valid hex color
-      if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$) /i.test(color_picker.value())){
-          color = color_picker.value(color)
-          color_holder.style('background-color', color)
-      }
-      else {console.log('Enter a valid hex value')}
-      })
-
+      // if (/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$) /i.test(color_picker.value())){
+      //     color = color_picker.value(color)
+      //     color_holder.style('background-color', color)
+      // }
+      // else {console.log('Enter a valid hex value')}
+    })
     // Adding a mousePressed listener to the button
-    stroke_btn.mousePressed(() => {
-     const width = parseInt(stroke_width_picker.value())
-     if (width > 0) strokeWidth = width
+    stroke_slider.addEventListener("change", function(){
+      strokeWidth = stroke_slider.value;
     })
 
   }
@@ -66,6 +64,7 @@ export default function sketch(p){
   p.myCustomRedrawAccordingToNewPropsHandler = (props) =>{
     lobbyCode = props.lobbyCode;
     console.log(lobbyCode + "1")
+    getPaintColor = props.getPaintColor;
   }
 
   // Sending data to the socket
