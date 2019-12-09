@@ -16,23 +16,22 @@ class ViewCardPage extends React.Component
   }
    returns =
   [{
-    imagePath: "./resources/LogoCircle.png",
-    name: "Welcome to Smüdge!",
-    date: "04/20/69",
-    artists:
-      ["------"]
+    imagePath: "./resources/LogoCircle.png"
   },
   ];
 
     loadCards()
     {
       //TODO: Put database loading here!
-      for(var i = 0; i < 30; i++)
+      // fetch actual strings
+      var arrayOfStrings = ["aaaaa", "bbbbb", "ccccc"];
+      for(var i = 0; i < arrayOfStrings.length; i++)
       {
         this.returns.push({
-        imagePath: "./resources/LogoCircle.png"
-      })
+          imagePath: arrayOfStrings[i]
+        })
       }
+      
       return this.filterCards();
     }
   search = (e) => {
