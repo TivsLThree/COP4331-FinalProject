@@ -6,7 +6,6 @@ import {Modal} from 'react-bootstrap'
 // Image,
 // Name
 // Date
-import logo from '../resources/LogoCircle.png'
 class Card extends Component
 {
 constructor(props){
@@ -14,9 +13,11 @@ constructor(props){
   this.state = {
     show: false
   }
+      console.log(this.props.imagePath)
 }
 
 componentDidMount() {
+      console.log(this.props.imagePath)
       document.body.classList.add("login")
 }
   handleOpen = () => {
@@ -28,12 +29,12 @@ componentDidMount() {
   }
   render()
   {
-  var OVERRIDE = true;
+
   return (
     <div className="card" style={{width: '50rem'}}
      onClick={this.handleOpen}
     >
-      <img className="card-img-top" src={(OVERRIDE) ? logo: this.props.imagePath} title="ur mom"/>
+      <img className="card-img-top" src={this.props.imagePath} title="ur mom"/>
     </div>
   );
 }

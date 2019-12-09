@@ -54,6 +54,20 @@ export default function sketch(p){
     // Adding a mousePressed listener to the button
     save_button.addEventListener("click", function () {
       //TODO: Make DATABASE call to save
+      console.log(localStorage.getItem('userID'));
+      let body = {
+        stringData: cv.canvas.toDataURL(),
+        owner: localStorage.getItem('userID')
+      }
+      fetch("http://localhost:3001" + "/api/images/save", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': localStorage.getItem('jwtToken')
+
+        }
+      })
       let imageAsString = cv.canvas.toDataURL();
       console.log(imageAsString);
     })

@@ -29,9 +29,8 @@ class App extends Component {
             <Navbar/>
             <Switch>
               {/*TODO: Make this PrivateRoute once api calls work*/}
-              <Route exact path ="/dashboard" component = {ViewCardPage}/>
-              <Route exact path ="/lobby" component ={LobbyPage}/>
-              <Route exact path ="/joinlobby" component ={JoinLobby}/>
+              <PrivateRoute exact path ="/dashboard" component = {ViewCardPage}/>
+              <PrivateRoute exact path ="/lobby" component ={LobbyPage}/>
               <Route exact path="/" component ={LoginPage}/>
 
               <Route exact component = {null}/>
