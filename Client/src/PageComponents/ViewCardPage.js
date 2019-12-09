@@ -8,31 +8,32 @@ class ViewCardPage extends React.Component
 {
   constructor (props) {
     super(props);
-  //  this.loadCards();
+
   this.state = {
     search: {searchText: ''},
-    cards: this.loadCards()
+    paths: []
   };
+    this.loadCards();
   }
-   returns =
-  [{
-    imagePath: "./resources/LogoCircle.png"
-  },
-  ];
 
     loadCards()
     {
-      //TODO: Put database loading here!
-      // fetch actual strings
-      var arrayOfStrings = ["aaaaa", "bbbbb", "ccccc"];
-      for(var i = 0; i < arrayOfStrings.length; i++)
-      {
-        this.returns.push({
-          imagePath: arrayOfStrings[i]
-        })
-      }
-      
-      return this.filterCards();
+      var strings;
+      let body = {owner: localStorage.getItem("userID")}
+      fetch("http://localhost:3001" + "/api/images/list", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': localStorage.getItem('jwtToken')
+        }
+      })
+      .then( res => {
+        return res.json()
+      })
+      .then( str => {
+        this.setState({paths: str})
+      })
     }
   search = (e) => {
     this.setState({search: e});
@@ -43,20 +44,17 @@ class ViewCardPage extends React.Component
     if(filterText === undefined)
       filterText = '';
     filterText = filterText.toLowerCase();
-    const saved = this.returns.slice(0).filter((e) => {
-      return true /* &&
-      (e.date.toString().toLowerCase().includes(filterText) ||
-      e.name.toLowerCase().includes(filterText) ||
-      e.artists.toString().toLowerCase().includes(filterText)
-    )*/
-    }).map((item, index) => {
-      return (
-        <a><Card
-        imagePath = {item.imagePath}
-        /></a>
-      )
-    })
-    return saved
+    var cards = [];
+    for(var i = 0; i < this.state.paths.length; i++)
+    {
+      console.log(this.state.paths)
+      cards.push(        (<a><Card
+              imagePath = {this.state.paths[i].stringData}
+              /></a>))
+    }
+
+    console.log(cards)
+    return cards
   }
 
   render ()
@@ -97,7 +95,7 @@ class ViewCardPage extends React.Component
                   {left}
                 </div>
                   <div className = 'scrollPicture slide1' id = "centerSlide">
-                  {this.state.cards}
+                  {this.filterCards()}
                   </div>
                 <div id = "rightArrow">
                   {right}

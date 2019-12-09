@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../authActions';
 import TextFieldGroup from '../TextFieldGroup';
-import background from '../resources/background.png'
 import '../css/Login.css'
 class LoginPage extends Component {
   constructor() {
@@ -20,13 +19,13 @@ class LoginPage extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/login');
+      this.props.history.push('/dashboard');
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/login');
+      this.props.history.push('/dashboard');
     }
 
     if (nextProps.errors) {
@@ -35,7 +34,6 @@ class LoginPage extends Component {
   }
 
   componentDidMount() {
-        document.body.background = background;
         document.body.classList.add("login")
   }
   onSubmit(e) {

@@ -14,6 +14,7 @@ import JoinLobby from "./PageComponents/JoinLobby"
 import PrivateRoute from "./PrivateRoute";
 
 import Navbar from './PageComponents/Navbar';
+
 //TODO: Figure out a scrollable horizontal
 // Correct format
 //<Card imagePath="./LogoCircle.png" name="Masterpiece" date="69/69/69" artists="Me. Myself. I"/>
@@ -28,9 +29,8 @@ class App extends Component {
             <Navbar/>
             <Switch>
               {/*TODO: Make this PrivateRoute once api calls work*/}
-              <Route exact path ="/dashboard" component = {ViewCardPage}/>
-              <Route exact path ="/lobby" component ={LobbyPage}/>
-              <Route exact path ="/joinlobby" component ={JoinLobby}/>
+              <PrivateRoute exact path ="/dashboard" component = {ViewCardPage}/>
+              <PrivateRoute exact path ="/lobby" component ={LobbyPage}/>
               <Route exact path="/" component ={LoginPage}/>
 
               <Route exact component = {null}/>
