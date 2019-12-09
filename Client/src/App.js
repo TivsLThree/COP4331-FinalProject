@@ -14,6 +14,7 @@ import JoinLobby from "./PageComponents/JoinLobby"
 import PrivateRoute from "./PrivateRoute";
 
 import Navbar from './PageComponents/Navbar';
+
 //TODO: Figure out a scrollable horizontal
 // Correct format
 //<Card imagePath="./LogoCircle.png" name="Masterpiece" date="69/69/69" artists="Me. Myself. I"/>
