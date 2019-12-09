@@ -5,9 +5,10 @@ const bodyParser = require('body-parser')
 
 // need a reference to items:
 const items = require('./routes/api/items')
-// TODO:
-// const users...
 const users = require('./routes/api/users')
+// TODO:
+// const images = ......
+const images = require('./routes/api/images')
 
 const app = express()
 // Body parser middleware
@@ -28,9 +29,9 @@ app.set('port', '3001')
 
 // Use Routes:
 app.use('/api/items/', items);
-// TODO:
-// app.use users
 app.use('/api/users/', users);
+// TODO:
+app.use('/api/images', images)
 
 const server = http.createServer(app)
 server.on('listening', () => {
