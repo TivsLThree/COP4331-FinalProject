@@ -38,13 +38,12 @@ class LobbyPage extends Component {
     return (
       <div>
         <Container style={{position: "absolute",paddingLeft: "80px"}}>
-          <Row>
             <Col>
               <button className="btn btn-success" id="saveButton" style={{bottom:"10px"}}>
                 Save Image!
                 </button>
             </Col>
-          </Row>
+            <p/>
           <Row>
             <Col>
               <CirclePicker className="colorPicker" onChange={this.onChangeColor}/>
