@@ -67,6 +67,7 @@ class LoginPage extends Component {
 
               </p>
               <form onSubmit={this.onSubmit}>
+                <h4 className="text-center">Login</h4>
                 <TextFieldGroup
                   placeholder="Email Address"
                   name="email"
@@ -85,6 +86,42 @@ class LoginPage extends Component {
                   error={errors.password}
                 />
                 <input type="submit" className="btn btn-primary btn-block mt-4" />
+              
+              </form>
+              <br/>
+              <hr/>
+              <form onSubmit={this.onSubmit}>
+                <div className="container text-center">
+                  <h4>Sign Up!</h4>
+                  
+                  <TextFieldGroup 
+                  placeholder="Enter Your Email Address"
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email}/>
+
+                  <TextFieldGroup 
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
+                  />
+
+                  <TextFieldGroup
+                  placeholder="Confirm Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
+                  />
+
+                  <input type="submit" className="btn btn-primary btn-block mt-4" />
+                </div>
               </form>
             </div>
           </div>

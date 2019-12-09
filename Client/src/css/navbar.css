@@ -1,4 +1,11 @@
 .NavbarLogo {
     width: 150px;
     height: 75;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.navbar {
+    margin: 0;
+    padding: 0px;
 }
