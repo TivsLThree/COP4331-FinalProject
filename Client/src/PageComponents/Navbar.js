@@ -40,8 +40,8 @@ class Navbar extends Component {
       <Route render={({ history }) => (
         <button className="btn btn-danger" variant="outline-danger"
           type='button'
-
           onClick={(e) => {
+                      this.onLogoutClick(e);
             history.push("/") }}
             >
           Logout

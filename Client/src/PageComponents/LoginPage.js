@@ -2,19 +2,25 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../authActions';
+import { registerUser } from "../authActions";
 import TextFieldGroup from '../TextFieldGroup';
+import {FormControl} from 'react-bootstrap'
 import '../css/Login.css'
 class LoginPage extends Component {
   constructor() {
     super();
     this.state = {
-      email: '',
-      password: '',
+      loginEmail: '',
+      loginPassword: '',
+      registerEmail: '',
+      registerPassword: '',
+      registerConfirm: '',
       errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmitRegister = this.onSubmitRegister.bind(this);
   }
 
   componentDidMount() {
@@ -36,12 +42,24 @@ class LoginPage extends Component {
   componentDidMount() {
         document.body.classList.add("login")
   }
+  onSubmitRegister(e)
+  {
+    e.preventDefault();
+    if(this.state.registerPassword != this.state.registerConfirm)
+    return;
+    const userData = {
+      email: this.state.registerEmail,
+      password: this.state.registerConfirm
+    }
+    console.log(userData);
+    registerUser(userData);
+  }
   onSubmit(e) {
     e.preventDefault();
 
     const userData = {
-      email: this.state.email,
-      password: this.state.password
+      email: this.state.loginEmail,
+      password: this.state.loginPassword
     };
 
     this.props.loginUser(userData);
@@ -65,55 +83,55 @@ class LoginPage extends Component {
 
               </p>
               <form onSubmit={this.onSubmit}>
-                <h4 className="text-center">Login</h4>
-                <TextFieldGroup
+                <h2 className="text-center"><b>Login</b></h2>
+                <FormControl className="inputs"
+                  aria-label="Email Address"
+                  aria-describedby="basic-addon1"
                   placeholder="Email Address"
-                  name="email"
+                  name="loginEmail"
                   type="email"
-                  value={this.state.email}
+                  value={this.state.loginEmail}
                   onChange={this.onChange}
-                  error={errors.email}
                 />
-
-                <TextFieldGroup
+                <p/>
+                <FormControl className="inputs"
                   placeholder="Password"
-                  name="password"
+                  name="loginPassword"
                   type="password"
-                  value={this.state.password}
+                  value={this.state.loginPassword}
                   onChange={this.onChange}
-                  error={errors.password}
                 />
-                <input type="submit" className="btn btn-primary btn-block mt-4" />
-              
+                <input style={{height:"45px"}} type="submit" className="btn btn-primary btn-block mt-4" />
+
               </form>
               <br/>
               <hr/>
-              <form onSubmit={this.onSubmit}>
+              <form onSubmit={this.onSubmitRegister}>
                 <div className="container text-center">
                   <h4>Sign Up!</h4>
-                  
-                  <TextFieldGroup 
+
+                  <FormControl className="inputs"
                   placeholder="Enter Your Email Address"
-                  name="email"
+                  name="registerEmail"
                   type="email"
-                  value={this.state.email}
+                  value={this.state.registerEmail}
                   onChange={this.onChange}
                   error={errors.email}/>
-
-                  <TextFieldGroup 
+                  <p/>
+                  <FormControl className="inputs"
                   placeholder="Password"
-                  name="password"
+                  name="registerPassword"
                   type="password"
-                  value={this.state.password}
+                  value={this.state.registerPassword}
                   onChange={this.onChange}
                   error={errors.password}
                   />
-
-                  <TextFieldGroup
+                  <p/>
+                  <FormControl className="inputs"
                   placeholder="Confirm Password"
-                  name="password"
+                  name="registerConfirm"
                   type="password"
-                  value={this.state.password}
+                  value={this.state.registerConfirm}
                   onChange={this.onChange}
                   error={errors.password}
                   />
@@ -133,6 +151,7 @@ class LoginPage extends Component {
 
 LoginPage.propTypes = {
   loginUser: PropTypes.func.isRequired,
+
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
