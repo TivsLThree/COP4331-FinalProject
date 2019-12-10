@@ -12,8 +12,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LobbyPage from "./PageComponents/LobbyPage"
 import JoinLobby from "./PageComponents/JoinLobby"
 import PrivateRoute from "./PrivateRoute";
+import setAuthToken from "./setAuthToken";
+import { setCurrentUser, logoutUser } from "./authActions";
+import { clearCurrentProfile } from "./profileActions";
 
 import Navbar from './PageComponents/Navbar';
+
+// Check for token
+if (localStorage.jwtToken) {
+  // Set auth token header auth
+  setAuthToken(localStorage.jwtToken);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(localStorage.jwtToken);
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+
+  // Check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch(logoutUser());
+    // Clear current Profile
+    store.dispatch(clearCurrentProfile());
+
+    // Redirect to login
+    window.location.href = "/login";
+  }
+}
 
 //TODO: Figure out a scrollable horizontal
 // Correct format

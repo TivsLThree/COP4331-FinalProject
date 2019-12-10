@@ -14,7 +14,7 @@ export default function sketch(p){
   p.setup = async function() {
     await sleep(100)
       // cv = createCanvas(windowWidth/2, windowHeight/2)
-      cv = p.createCanvas(1200,900)
+      cv = p.createCanvas(720,520)
       cv.position(500, 115)
       cv.background(255, 255, 255)
             console.log(cv.canvas.toDataURL());

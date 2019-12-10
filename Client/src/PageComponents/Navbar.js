@@ -50,6 +50,19 @@ class Navbar extends Component {
               </button>
             )} />
           </Form>)
+    
+    const Logout = (
+      <Route render={({ history }) => (
+        <button className="btn btn-danger" variant="outline-danger"
+          type='button'
+          onClick={(e) => {
+            console.log( document.getElementById("inputText").value)
+            history.replace("/", {response: document.getElementById("inputText").value}) }}
+            >
+          Logout
+        </button>
+      )} />
+    )
     /*const guestLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
@@ -68,7 +81,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-primary mb-4">
         <div className="container d-flex">
-          <Link to="/">
+          <Link to="/dashboard">
             <span class="align-left">
           <a className="navbar-brand" href="#"><img src={logo} className="NavbarLogo d-inline-block align-top" alt="Home"/></a>
           </span>
@@ -86,6 +99,7 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto">
             </ul>
             {JoinLobby}
+            {Logout}
             {false && isAuthenticated ? authLinks : ""}
           </div>
         </div>
