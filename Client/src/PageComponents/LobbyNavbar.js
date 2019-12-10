@@ -34,18 +34,15 @@ class Navbar extends Component {
       </ul>
     );
     var value;
-    const JoinLobby = (
+    const Dashboard = (
           <Form inline>
-            <Form.Group className="pull-left"controlId="formBasicEmail" style ={{paddingLeft: "20px"}}>
-              <Form.Control className="mr-sm-2"type="text" value = {value} id="inputText" placeholder="Enter a code to get started!"style ={{width: "202px", paddingLeft: "0px"}} />
-            </Form.Group>
             <Route render={({ history}) => (
               <button className="btn btn-success" variant="outline-success"
                 type='button'
                 onClick={(e) => {
-                  history.replace("/lobby", {response: document.getElementById("inputText").value}) }}
+                  history.replace("/dashboard") }}
                   >
-                Join!
+                Dashboard
               </button>
             )} />
           </Form>)
@@ -97,7 +94,7 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
             </ul>
-            {isAuthenticated ? JoinLobby : ""}
+            {isAuthenticated ? Dashboard : ""}
             {isAuthenticated ? Logout : ""}
           </div>
         </div>

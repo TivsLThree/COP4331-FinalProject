@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { loginUser } from '../authActions';
 import TextFieldGroup from '../TextFieldGroup';
 import '../css/Login.css'
+import Navbar from './Navbar';
 class LoginPage extends Component {
   constructor() {
     super();
@@ -55,6 +56,8 @@ class LoginPage extends Component {
     const { errors } = this.state;
 
     return (
+      <div>
+      <Navbar/>
       <div className="Login-component">
       <div className="registerLoginPage">
       <div className="">
@@ -94,6 +97,7 @@ class LoginPage extends Component {
             </div>
           </div>
         </div>
+      </div>
       </div>
       </div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component} from 'react'
 import {Form} from 'react-bootstrap'
-import Button from 'react'
+import {Button} from 'react-bootstrap'
 import {Modal} from 'react-bootstrap'
 // Image,
 // Name
@@ -10,14 +10,16 @@ class Card extends Component
 {
 constructor(props){
   super(props)
+  console.log(this.props.delete)
   this.state = {
-    show: false
+    show: false,
+    id: this.props.id,
+    delete: this.props.delete
   }
-      console.log(this.props.imagePath)
 }
 
+
 componentDidMount() {
-      console.log(this.props.imagePath)
       document.body.classList.add("login")
 }
   handleOpen = () => {
@@ -25,16 +27,17 @@ componentDidMount() {
   }
   handleClose = () => {
     this.setState({show:false})
-    console.log(this.state.show)
   }
   render()
   {
 
   return (
-    <div className="card" style={{width: '50rem'}}
-     onClick={this.handleOpen}
+    <div className="card" style={{width: '42rem'}}
     >
       <img className="card-img-top" src={this.props.imagePath} title="ur mom"/>
+        <div className="card-body">
+        <Button onClick = {() => this.state.delete(this.state.id)}variant="btn btn-danger">Delete</Button>
+        </div>
     </div>
   );
 }

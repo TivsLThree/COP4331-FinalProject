@@ -4,6 +4,7 @@ import Random from "random-words"
 import '../css/Card.css'
 import backgroundImg from '../resources/background.png';
 import SearchBar from './SearchBar'
+import Navbar from './Navbar';
 class ViewCardPage extends React.Component
 {
   constructor (props) {
@@ -15,7 +16,6 @@ class ViewCardPage extends React.Component
   };
     this.loadCards();
   }
-
     loadCards()
     {
       var strings;
@@ -32,12 +32,33 @@ class ViewCardPage extends React.Component
         return res.json()
       })
       .then( str => {
+        console.log(str);
         this.setState({paths: str})
       })
     }
   search = (e) => {
     this.setState({search: e});
     this.setState({cards: this.filterCards(e.searchText)});
+  }
+  deleteCard = (id) => {
+    console.log(id)
+    var cpy = this.state.paths.filter( (item, index) => {
+    return  item._id !== id
+    })
+    console.log(cpy)
+    this.setState({paths: cpy});
+    fetch("http://localhost:3001" + "/api/images/delete/" + id, {
+      method: "DELETE",
+      headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('jwtToken')
+      }
+    })
+    .then( res => {
+      return res.json()
+    })
+    .then( str => {
+    })
   }
   filterCards = (filterText) => {
 
@@ -47,13 +68,12 @@ class ViewCardPage extends React.Component
     var cards = [];
     for(var i = 0; i < this.state.paths.length; i++)
     {
-      console.log(this.state.paths)
       cards.push(        (<a><Card
+              delete = {this.deleteCard}
+              id= {this.state.paths[i]._id}
               imagePath = {this.state.paths[i].stringData}
               /></a>))
     }
-
-    console.log(cards)
     return cards
   }
 
@@ -89,6 +109,7 @@ class ViewCardPage extends React.Component
     var h2 =  <h1 style ={{paddingLeft: "20px"}}>Saved Images</h1> ;
         return (
             <div className = "">
+            <Navbar/>
               {h2}
               <div id = "cardSlider">
                 <div id = "leftArrow">

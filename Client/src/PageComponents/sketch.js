@@ -14,16 +14,13 @@ export default function sketch(p){
   p.setup = async function() {
     await sleep(100)
       // cv = createCanvas(windowWidth/2, windowHeight/2)
-      cv = p.createCanvas(720,520)
+      cv = p.createCanvas(900,600)
       cv.position(500, 115)
       cv.background(255, 255, 255)
-            console.log(cv.canvas.toDataURL());
             var image = new Image()
             image.src = cv.canvas.toDataURL();
-            console.log(image)
       if(lobbyCode === undefined)
         lobbyCode = "default"
-      console.log(lobbyCode + "2")
       // socket io connect
      socket = io.connect('http://localhost:3001')
      socket.emit('room', {room: lobbyCode})
@@ -41,7 +38,6 @@ export default function sketch(p){
       // Adding a mousePressed listener to the button
       color_picker.addEventListener("click", async function(e) {
         await sleep(50);
-        console.log(getPaintColor());
         if(getPaintColor() != undefined)
         color = getPaintColor().hex;
       // Checking if the input is a valid hex color
@@ -54,7 +50,6 @@ export default function sketch(p){
     // Adding a mousePressed listener to the button
     save_button.addEventListener("click", function () {
       //TODO: Make DATABASE call to save
-      console.log(localStorage.getItem('userID'));
       let body = {
         stringData: cv.canvas.toDataURL(),
         owner: localStorage.getItem('userID')
@@ -69,7 +64,6 @@ export default function sketch(p){
         }
       })
       let imageAsString = cv.canvas.toDataURL();
-      console.log(imageAsString);
     })
     stroke_slider.addEventListener("change", function(){
       strokeWidth = stroke_slider.value;
@@ -87,7 +81,6 @@ export default function sketch(p){
   }
   p.myCustomRedrawAccordingToNewPropsHandler = (props) =>{
     lobbyCode = props.lobbyCode;
-    console.log(lobbyCode + "1")
     getPaintColor = props.getPaintColor;
   }
 

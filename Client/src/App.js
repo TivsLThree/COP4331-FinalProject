@@ -52,12 +52,11 @@ class App extends Component {
       <Provider store = {store}>
         <Router>
           <div className="App">
-            <Navbar/>
             <Switch>
               {/*TODO: Make this PrivateRoute once api calls work*/}
               <PrivateRoute exact path ="/dashboard" component = {ViewCardPage}/>
               <PrivateRoute exact path ="/lobby" component ={LobbyPage}/>
-              <PrivateRoute exact path ="/RegisterPage" component ={RegisterPage}/>
+              <Route exact path ="/RegisterPage" component ={RegisterPage}/>
 
               <Route exact path="/" component ={LoginPage}/>
 

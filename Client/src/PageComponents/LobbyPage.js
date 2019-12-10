@@ -6,6 +6,7 @@ import "../css/LobbyPage.css"
 import * as io from 'socket.io-client'
 import {CirclePicker} from 'react-color'
 import {Container, Row, Col} from 'react-bootstrap'
+import Navbar from './LobbyNavbar';
 const socket = io.connect('http://localhost:3001')
 var lobbyCode;
 var paintColor;
@@ -26,7 +27,6 @@ class LobbyPage extends Component {
 //    console.log(socket.connected)
   }
   onChangeColor(color, event) {
-    console.log(color)
     paintColor = color;
   }
   getPaintColor()
@@ -37,6 +37,7 @@ class LobbyPage extends Component {
 
     return (
       <div>
+      <Navbar/>
         <Container style={{position: "absolute",paddingLeft: "80px"}}>
             <Col>
               <button className="btn btn-success" id="saveButton" style={{bottom:"10px"}}>

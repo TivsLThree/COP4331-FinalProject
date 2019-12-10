@@ -5,6 +5,7 @@ import { loginUser } from '../authActions';
 import { registerUser } from '../authActions';
 import TextFieldGroup from '../TextFieldGroup';
 import '../css/Login.css'
+import Navbar from './Navbar';
 class RegisterPage extends Component {
   constructor() {
     super();
@@ -47,6 +48,7 @@ class RegisterPage extends Component {
     };
 
     this.props.registerUser(userData);
+    this.props.history.push("/");
   }
 
   onChange(e) {
@@ -57,6 +59,8 @@ class RegisterPage extends Component {
     const { errors } = this.state;
 
     return (
+      <div>
+      <Navbar/>
       <div className="Register-component">
       <div className="registerPage">
       <div className="">
@@ -93,6 +97,7 @@ class RegisterPage extends Component {
             </div>
           </div>
         </div>
+      </div>
       </div>
       </div>
       </div>
