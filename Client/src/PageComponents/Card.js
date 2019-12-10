@@ -13,11 +13,9 @@ constructor(props){
   this.state = {
     show: false
   }
-      console.log(this.props.imagePath)
 }
 
 componentDidMount() {
-      console.log(this.props.imagePath)
       document.body.classList.add("login")
 }
   handleOpen = () => {
@@ -25,7 +23,6 @@ componentDidMount() {
   }
   handleClose = () => {
     this.setState({show:false})
-    console.log(this.state.show)
   }
   render()
   {

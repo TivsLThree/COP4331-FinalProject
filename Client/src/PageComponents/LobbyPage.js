@@ -19,6 +19,7 @@ class LobbyPage extends Component {
       document.body.classList.add("background");
   }
   componentWillUnmount() {
+      localStorage.setItem("onLobbyPage", false);
     socket.emit('leave room', {
       room: lobbyCode
     })

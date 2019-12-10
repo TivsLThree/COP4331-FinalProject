@@ -58,7 +58,7 @@ class App extends Component {
               <PrivateRoute exact path ="/lobby" component ={LobbyPage}/>
               <Route exact path="/" component ={LoginPage}/>
 
-              <Route exact component = {null}/>
+              <Route component = {LoginPage}/>
               </Switch>
           </div>
         </Router>

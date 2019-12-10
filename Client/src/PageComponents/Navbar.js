@@ -19,20 +19,6 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
 
-    const authLinks = (
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          <a
-            href=""
-            onClick={this.onLogoutClick.bind(this)}
-            className="nav-link"
-          >
-            {' '}
-            Logout
-          </a>
-        </li>
-      </ul>
-    );
     var value;
     const JoinLobby = (
           <Form inline>
@@ -43,21 +29,20 @@ class Navbar extends Component {
               <button className="btn btn-success" variant="outline-success"
                 type='button'
                 onClick={(e) => {
-                  console.log( document.getElementById("inputText").value)
                   history.replace("/lobby", {response: document.getElementById("inputText").value}) }}
                   >
                 Join!
               </button>
             )} />
           </Form>)
-    
+
     const Logout = (
       <Route render={({ history }) => (
         <button className="btn btn-danger" variant="outline-danger"
           type='button'
+
           onClick={(e) => {
-            console.log( document.getElementById("inputText").value)
-            history.replace("/", {response: document.getElementById("inputText").value}) }}
+            history.push("/") }}
             >
           Logout
         </button>
@@ -77,7 +62,6 @@ class Navbar extends Component {
         </li>
       </ul>
     );*/
-
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-primary mb-4">
         <div className="container d-flex">
@@ -98,9 +82,8 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
             </ul>
-            {JoinLobby}
-            {Logout}
-            {false && isAuthenticated ? authLinks : ""}
+            {isAuthenticated ? JoinLobby : ""}
+            {isAuthenticated ? Logout: ""}
           </div>
         </div>
       </nav>

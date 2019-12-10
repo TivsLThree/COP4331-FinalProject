@@ -47,7 +47,6 @@ class ViewCardPage extends React.Component
     var cards = [];
     for(var i = 0; i < this.state.paths.length; i++)
     {
-      console.log(this.state.paths)
       cards.push(        (<a><Card
               imagePath = {this.state.paths[i].stringData}
               /></a>))
