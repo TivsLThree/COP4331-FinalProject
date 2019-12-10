@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Card from './PageComponents/Card'
 import LoginPage from './PageComponents/LoginPage'
+import RegisterPage from './PageComponents/RegisterPage'
 import {Row} from 'react-bootstrap'
 import {Container} from 'react-bootstrap'
 import ViewCardPage from './PageComponents/ViewCardPage'
@@ -56,6 +57,8 @@ class App extends Component {
               {/*TODO: Make this PrivateRoute once api calls work*/}
               <PrivateRoute exact path ="/dashboard" component = {ViewCardPage}/>
               <PrivateRoute exact path ="/lobby" component ={LobbyPage}/>
+              <PrivateRoute exact path ="/RegisterPage" component ={RegisterPage}/>
+
               <Route exact path="/" component ={LoginPage}/>
 
               <Route exact component = {null}/>

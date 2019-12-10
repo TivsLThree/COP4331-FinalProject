@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../authActions';
+import { registerUser } from '../authActions';
 import TextFieldGroup from '../TextFieldGroup';
 import '../css/Login.css'
-class LoginPage extends Component {
+class RegisterPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,13 +20,13 @@ class LoginPage extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/');
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/');
     }
 
     if (nextProps.errors) {
@@ -36,6 +37,7 @@ class LoginPage extends Component {
   componentDidMount() {
         document.body.classList.add("login")
   }
+
   onSubmit(e) {
     e.preventDefault();
 
@@ -44,7 +46,7 @@ class LoginPage extends Component {
       password: this.state.password
     };
 
-    this.props.loginUser(userData);
+    this.props.registerUser(userData);
   }
 
   onChange(e) {
@@ -55,8 +57,8 @@ class LoginPage extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="Login-component">
-      <div className="registerLoginPage">
+      <div className="Register-component">
+      <div className="registerPage">
       <div className="">
         <div className="container">
           <div className="row">
@@ -65,7 +67,7 @@ class LoginPage extends Component {
 
               </p>
               <form onSubmit={this.onSubmit}>
-                <h4 className="text-center">Login</h4>
+                <h4 className="text-center">Register</h4>
                 <TextFieldGroup
                   placeholder="Email Address"
                   name="email"
@@ -83,10 +85,7 @@ class LoginPage extends Component {
                   onChange={this.onChange}
                   error={errors.password}
                 />
-                <input type="submit" className="btn btn-primary btn-block mt-4" value = "Login" />
-                <a className="btn btn-primary btn-block mt-4"  href="RegisterPage" role="button">Register</a>
-
-
+                <input type="submit" className="btn btn-primary btn-block mt-4" />
               </form>
               <br/>
               <hr/>
@@ -101,8 +100,8 @@ class LoginPage extends Component {
   }
 }
 
-LoginPage.propTypes = {
-  loginUser: PropTypes.func.isRequired,
+RegisterPage.propTypes = {
+  registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -112,4 +111,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { loginUser })(LoginPage);
+export default connect(mapStateToProps, { registerUser })(RegisterPage);
