@@ -92,7 +92,6 @@ class LoginPage extends Component {
 
               </form>
               <br/>
-              <hr/>
 
             </div>
           </div>
