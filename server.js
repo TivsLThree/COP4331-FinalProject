@@ -43,6 +43,11 @@ app.use('/api/items', items);
 app.use('/api/users', users);
 // TODO:
 app.use('/api/images', images)
+
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, 'client/public', 'index.html'))
+})
+
 server.listen((process.env.PORT || 3001),function() {
   console.log("server is running on port", server.address().port)
 })
