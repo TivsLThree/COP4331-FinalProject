@@ -88,7 +88,7 @@ class LoginPage extends Component {
                 />
                 <input type="submit" className="btn btn-primary btn-block mt-4" value = "Login" />
                 <a className="btn btn-primary btn-block mt-4"  href=""  onClick = {(e) => {
-                  history.replace("/RegisterPage")
+                
                 }}role="button">Register</a>
 
 
