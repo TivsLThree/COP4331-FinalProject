@@ -22,7 +22,7 @@ export default function sketch(p){
       if(lobbyCode === undefined)
         lobbyCode = "default"
       // socket io connect
-     socket = io.connect('http://localhost:3001')
+     socket = io.connect('http://ucfgroupwork.site:3001')
      socket.emit('room', {room: lobbyCode})
     //  callback function (used to draw data received from other sockets)
       socket.on('mouse', data => {
@@ -54,7 +54,7 @@ export default function sketch(p){
         stringData: cv.canvas.toDataURL(),
         owner: localStorage.getItem('userID')
       }
-      fetch("http://localhost:3001" + "/api/images/save", {
+      fetch("http://ucfgroupwork.site:3001" + "/api/images/save", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {

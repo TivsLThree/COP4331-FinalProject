@@ -20,7 +20,7 @@ class ViewCardPage extends React.Component
     {
       var strings;
       let body = {owner: localStorage.getItem("userID")}
-      fetch("http://localhost:3001" + "/api/images/list", {
+      fetch("http://ucfgroupwork.site:3001" + "/api/images/list", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
@@ -47,7 +47,7 @@ class ViewCardPage extends React.Component
     })
     console.log(cpy)
     this.setState({paths: cpy});
-    fetch("http://localhost:3001" + "/api/images/delete/" + id, {
+    fetch("http://ucfgroupwork.site:3001" + "/api/images/delete/" + id, {
       method: "DELETE",
       headers: {
                 'Content-Type': 'application/json',

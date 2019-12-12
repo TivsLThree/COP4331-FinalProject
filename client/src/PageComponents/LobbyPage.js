@@ -7,7 +7,7 @@ import * as io from 'socket.io-client'
 import {CirclePicker} from 'react-color'
 import {Container, Row, Col} from 'react-bootstrap'
 import Navbar from './LobbyNavbar';
-const socket = io.connect('http://localhost:3001')
+const socket = io.connect('http://ucfgroupwork.site:3001')
 var lobbyCode;
 var paintColor;
 class LobbyPage extends Component {
