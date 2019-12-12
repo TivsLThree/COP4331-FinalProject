@@ -19,7 +19,7 @@ const mongoose = require('mongoose')
 // Body parser middleware
 app.use(passport.initialize());
 //app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, "client")))
+app.use(express.static(path.join(__dirname, "client/build")))
 app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 
