@@ -87,9 +87,7 @@ class LoginPage extends Component {
                   error={errors.password}
                 />
                 <input type="submit" className="btn btn-primary btn-block mt-4" value = "Login" />
-                <a className="btn btn-primary btn-block mt-4"  href=""  onClick = {(e) => {
-                 
-                }}role="button">Register</a>
+              <a className="btn btn-primary btn-block mt-4"  href="RegisterPage" role="button">Register</a>
 
 
               </form>
